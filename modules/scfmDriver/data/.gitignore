@@ -1,0 +1,9 @@
+## ignore all
+*
+
+## don't ignore
+!CHECKSUMS.txt
+!.gitignore
+!cachedDriversEcodistrict644.rda
+!spread_firesize_curves.csv
+!FiresN1000MinFiresSize2NoLakes.csv

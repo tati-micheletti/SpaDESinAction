@@ -1,0 +1,40 @@
+,Class,Description,Class.Vernier,Description.Vernier,Class.strata,Description.strata
+1,1,Temperate or subpolar needle-leaved evergreen closed tree canopy,6,Stands with >70% white spruce,5,"Sw - pure white spruce, >80% Sw"
+2,2,Cold deciduous closed tree canopy,5,Stands >90 years and >70% deciduous,1,Aw -  Pure Aspen Populus tremuloides
+3,3,Mixed needle-leaved evergreen - cold deciduous closed tree canopy,9,Stands with <70% deciduous and <70% spruce,4,SwAw - 50-80% Sw (as above)
+4,4,Mixed needle-leaved evergreen - cold deciduous closed young tree canopy,9,Stands with <70% deciduous and <70% spruce,3,AwSw - 20-50% Sw (this would be based on AVI or Phase 3 inventory calls)
+5,5,Mixed cold deciduous - needle-leaved evergreen closed tree canopy,9,Stands with <70% deciduous and <70% spruce,4,SwAw - 50-80% Sw (as above)
+6,6,"Temperate or subpolar needle-leaved evergreen medium density, moss-shrub understory",7,Black Spruce,6,Sb -  Black Spruce Picea mariana
+7,7,"Temperate or subpolar needle-leaved evergreen medium density, lichen-shrub understory",8,Pine stands,7, Pj -  Jack Pine Pinus banksiana
+8,8,"Temperate or subpolar needle-leaved evergreen low density, shrub-moss understory",7,Black Spruce,6,Sb -  Black Spruce Picea mariana
+9,9,"Temperate or subpolar needle-leaved evergreen low density, lichen (rock) understory",8,Pine stands,7, Pj -  Jack Pine Pinus banksiana
+10,10,"Temperate or subpolar needle-leaved evergreen low density, poorly drained",7,Black Spruce,6,Sb -  Black Spruce Picea mariana
+11,11,"Cold deciduous broad-leaved, low to medium density",4,Stands 31 - 90 years and >70% deciduous,1,Aw -  Pure Aspen Populus tremuloides
+12,12,"Cold deciduous broad-leaved, medium density, young regenerating",4,Stands 31 - 90 years and >70% deciduous,1,Aw -  Pure Aspen Populus tremuloides
+13,13,"Mixed needle-leaved evergreen - cold deciduous, low to medium density",9,Stands with <70% deciduous and <70% spruce,3,AwSw - 20-50% Sw (this would be based on AVI or Phase 3 inventory calls)
+14,14,"Mixed cold deciduous - needle-leaved evergreen, low to medium density",9,Stands with <70% deciduous and <70% spruce,3,AwSw - 20-50% Sw (this would be based on AVI or Phase 3 inventory calls)
+15,15,Low regenerating young mixed cover,4,Stands 31 - 90 years and >70% deciduous,3,AwSw - 20-50% Sw (this would be based on AVI or Phase 3 inventory calls)
+16,16,High-low shrub dominated,2,"Agriculture, non-forested openings, and wetland",0,Other
+17,17,Grassland,2,"Agriculture, non-forested openings, and wetland",0,Other
+18,18,Herb-shrub-bare cover,2,"Agriculture, non-forested openings, and wetland",0,Other
+19,19,Wetlands,2,"Agriculture, non-forested openings, and wetland",0,Other
+20,20,"Sparse needle-leaved evergreen, herb-shrub cover",2,"Agriculture, non-forested openings, and wetland",0,Other
+21,21,"Polar grassland, herb-shrub",2,"Agriculture, non-forested openings, and wetland",0,Other
+22,22,Shrub-herb-lichen-bare,2,"Agriculture, non-forested openings, and wetland",0,Other
+23,23,Herb-shrub poorly drained,2,"Agriculture, non-forested openings, and wetland",0,Other
+24,24,Lichen-shrub-herb-bare soil,2,"Agriculture, non-forested openings, and wetland",0,Other
+25,25,Low vegetation cover,2,"Agriculture, non-forested openings, and wetland",0,Other
+26,26,Cropland-woodland,2,"Agriculture, non-forested openings, and wetland",0,Other
+27,27,High biomass cropland,2,"Agriculture, non-forested openings, and wetland",0,Other
+28,28,Medium biomass cropland,2,"Agriculture, non-forested openings, and wetland",0,Other
+29,29,Low biomass cropland,2,"Agriculture, non-forested openings, and wetland",0,Other
+30,30,Lichen barren,2,"Agriculture, non-forested openings, and wetland",0,Other
+31,31,Lichen-sedge-moss-low shrub wetland,2,"Agriculture, non-forested openings, and wetland",0,Other
+32,32,Lichen-spruce bog,2,"Agriculture, non-forested openings, and wetland",0,Other
+33,33,Rock outcrops,11,"Well sites, large cutlines, roads",0,Other
+34,34,Recent burns,3,Fire-origin stands <30 years and >70% deciduous,0,Other
+35,35,Old burns (<10 years),3,Fire-origin stands <30 years and >70% deciduous,0,Other
+36,36,Urban and Built-up,11,"Well sites, large cutlines, roads",0,Other
+37,37,Water bodies,1,Water (lakes and rivers),0,Other
+38,38,Mixes of water and land,1,Water (lakes and rivers),0,Other
+39,39,Snow/ ice,1,Water (lakes and rivers),0,Other

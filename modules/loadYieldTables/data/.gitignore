@@ -1,0 +1,12 @@
+## ignore all
+*
+
+## don't ignore
+!CHECKSUMS.txt
+!.gitignore
+!./AB/*.*
+!AB/
+!/AB
+!/AB/
+!AlPac AME Mixedwood VolTabs.vol
+!tst

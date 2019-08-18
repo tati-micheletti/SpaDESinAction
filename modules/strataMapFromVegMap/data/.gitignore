@@ -1,0 +1,9 @@
+## ignore all
+*
+
+## don't ignore
+!CHECKSUMS.txt
+!.gitignore
+!tablesConvert.R
+!VernierTable1.csv
+!ConvertTable.csv

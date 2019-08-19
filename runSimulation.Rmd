@@ -34,7 +34,6 @@ folder should point to where all your modules' *folders* are. SpaDES will find a
 devtools::install_github("PredictiveEcology/SpaDES.core", ref = "development")
 devtools::install_github("PredictiveEcology/SpaDES.tools", ref = "development")
 devtools::install_github("PredictiveEcology/reproducible", ref = "development")
-devtools::install_github("PredictiveEcology/reproducible", ref = "development")
 devtools::install_github("tati-micheletti/usefun")
 
 # Set a few options
@@ -251,11 +250,9 @@ Plot(COWAChange, title = paste0("COWA Delta presence probability from year ",
 RBNUChange <- (SpaDESinAction$birdAbundance[[paste0("Year", times$end)]][["RBNU"]] -
                  SpaDESinAction$birdAbundance[[paste0("Year", times$start)]][["RBNU"]]/
                  SpaDESinAction$birdAbundance[[paste0("Year", times$start)]][["RBNU"]])
-```
-
-```{r, echo = FALSE}
 Plot(RBNUChange, title = paste0("RBNU Delta presence probability from year ", 
                                 times$start, " to ", times$end), cols = pal(3))
+
 ```
 
 We can also see some of the caribou outputs:

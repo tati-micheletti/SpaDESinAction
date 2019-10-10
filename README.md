@@ -1,7 +1,7 @@
 ---
 title: "SpaDESinAction"
 author: "Tati Micheletti"
-date: "August 18, 2019"
+date: "October 10, 2019"
 output:
   pdf_document: default
   html_document: default
@@ -12,9 +12,16 @@ output:
 The present toy model is an exercise to understand how SpaDES works when integrating different modules. 
 It is composed of 4 main models (with one to several submodules within each):  
 
-1. SCFM (Steve Cumming's fire model): this model is composed of 3 main modules (ignition, escape and spread), and 3 auxiliary modules to establish the landscape, fire drivers, and fire regime. See more information on this model in  [modules/harvestREADME.Rmd](./modules/harvestREADME.Rmd)    
+1. SCFM (Steve Cumming's fire model): this model is composed of 3 main modules (ignition, escape and spread), and 3 auxiliary modules to establish the landscape, fire drivers, and fire regime.
+  See more information on this model in  [modules/harvestREADME.Rmd](modules/harvestREADME.Rmd)    
 
-2. SCSHM (Steve Cumming's Simple Harvest model): this model is composed of 5 main modules: loadYieldTables - loads yield tables necessary for identifying cut blocks, Hanzlik - determines AAC, strataMapFromVegMap - creates a strata map based on the vegetation, scfmHarvest - the harvest component itself, stateVars - a module that updates the state variables (what was cut and what burned). It also has an auxiliary module to establish the landscape. See more information on this model in [modules/scfmREADME.Rmd](./modules/scfmREADME.Rmd)  
+2. SCSHM (Steve Cumming's Simple Harvest model): this model is composed of 5 main modules:
+  `loadYieldTables` - loads yield tables necessary for identifying cut blocks;
+  `Hanzlik` - determines AAC;
+  `strataMapFromVegMap` - creates a strata map based on the vegetation;
+  `scfmHarvest` - the harvest component itself;
+  `stateVars` - a module that updates the state variables (what was cut and what burned).
+  It also has an auxiliary module to establish the landscape. See more information on this model in [modules/scfmREADME.Rmd](modules/scfmREADME.Rmd)  
 
 3. birdsAlberta (bird model based on Vernier's et al., 2008): this model uses coefficients from Vernier et al., 2008 to predict abundance of 2 species of bird (COWA and RBNU) in function of disturbance (fire and harvest).  
 
@@ -22,15 +29,12 @@ It is composed of 4 main models (with one to several submodules within each):
 
 ### Running the simulations
 
-
-
 #### 1. Setting up all necessary packages, paths and loading all necessary libraries  
 
-When setting up the paths using the `SpaDES.core` function `setPaths()`, note that the modules 
-folder should point to where all your modules' *folders* are. SpaDES will find all of these by their names.
+When setting up the paths using the `SpaDES.core` function `setPaths()`, note that the modules folder should point to where all your modules' *folders* are.
+`SpaDES` will find all of these by their names.
 
 ```{r setup, echo = TRUE, message = FALSE}
-
 devtools::install_github("PredictiveEcology/SpaDES.core", ref = "development")
 devtools::install_github("PredictiveEcology/SpaDES.tools", ref = "development")
 devtools::install_github("PredictiveEcology/reproducible", ref = "development")
@@ -56,21 +60,30 @@ options(spades.moduleCodeChecks = FALSE)
            cachePath = file.path(workDirectory, "cache"))
 ```
 
-
-
 #### 2. Setting up all inputs for the simulation runs
 
 To setup the simulation, we will set 3 'inputs' for the model:  
 
-1. **TIME**: start by setting the time for how long you want to run the simulations for. This needs to be a list, in the format of `list(start = 0, end = 10)`.  
+1. **TIME**: start by setting the time for how long you want to run the simulations for.
+  This needs to be a list, in the format of `list(start = 0, end = 10)`.  
 
-2. **PARAMETERS**: Next, pass the values of any parameters you would like to change. These values should be a `list()` of the name of the module that contains these. For example, if you want to modify how often the bird model should be run (by default only happening in the beginning and end of the simulation), you can pass inside the parameters list the following: `birdsAlberta = list(.plotInterval = 5)`, for it to run every 5 years. You can find all parameters that can be changed in the metadata of each module, together with a default value and the description of what that parameter does.  
+2. **PARAMETERS**: Next, pass the values of any parameters you would like to change.
+  These values should be a `list()` of the name of the module that contains these.
+  For example, if you want to modify how often the bird model should be run (by default only happening in the beginning and end of the simulation), you can pass inside the parameters list the following: `birdsAlberta = list(.plotInterval = 5)`, for it to run every 5 years.
+  You can find all parameters that can be changed in the metadata of each module, together with a default value and the description of what that parameter does.  
 
-3. **OBJECTS**: At last, pass any objects you might want to override from the defaults. One example is the study area. You can load a shapefile in R, and pass it in the form `list(studyArea = shapefile)`. The names of all objects passed need to match the names these have in the modules. These can also be found in the metadata of each module.  
+3. **OBJECTS**: At last, pass any objects you might want to override from the defaults.
+  One example is the study area.
+  You can load a shapefile in R, and pass it in the form `list(studyArea = shapefile)`.
+  The names of all objects passed need to match the names these have in the modules.
+  These can also be found in the metadata of each module.  
 
-It is interesting to note that while **objects are shared** accross modules, **parameters are not**. The modules are in fact integrated by the objects these use as *inputs* and objects these produce as *outputs*. These also have to be defined in the metadata.  
+It is interesting to note that while **objects are shared** accross modules, **parameters are not**.
+The modules are in fact integrated by the objects these use as *inputs* and objects these produce as *outputs*.
+These also have to be defined in the metadata.  
 
-Module developers should provide default values for all parameters and objetcs, even if the objects are expected as inputs. This guarantees that anyone running your module, even without any data, is capable of seeing it work.
+Module developers should provide default values for all parameters and objetcs, even if the objects are expected as inputs.
+This guarantees that anyone running your module, even without any data, is capable of seeing it work.
 
 ```{r setupSimulation, message = FALSE}
 times <- list(start = 0, end = 10)
@@ -78,16 +91,14 @@ parameters <- list()
 objects <- list()
 ```
 
-
-
 #### 3. Setting up the modules
 
 **MODULES**: The last step to run the simulation is to identify which modules you want to run together. This should also be passed as a list of the modules names i.e. list("module1", "module2", "module3").
 
-Here, we will mix and match a set of different modules to demonstrate the power of SpaDES. First, we will run a fire model, followed by a harvesting model, and at last, an integrated model that has fire, harvesting, birds and caribous.
+Here, we will mix and match a set of different modules to demonstrate the power of SpaDES.
+First, we will run a fire model, followed by a harvesting model, and at last, an integrated model that has fire, harvesting, birds and caribou.
 
 ```{r modules, message = FALSE}
-
 modulesFire <- list("scfmLandcoverInit", "scfmRegime", 
                     "scfmDriver", "scfmIgnition", 
                     "scfmEscape", "scfmSpread")
@@ -106,11 +117,11 @@ allModules <- list("scfmLandcoverInit", "scfmRegime",
                    "caribouAlberta") # Caribou population model
 ```
 
+#### 4. `SpaDES` in ACTION!
 
-
-#### 4. SpaDES in ACTION!
-
-At last, we will run the simulation calling the `simInitAndSpades()` function. This function needs as inputs the paths, times, parameters, objects, and modules, apart from the *loadOrder* of the modules. If the load order is not provided, the modules might be loaded in a different order than these are supposed to, which might return an error due to missing objects.
+At last, we will run the simulation calling the `simInitAndSpades()` function.
+This function needs as inputs the paths, times, parameters, objects, and modules, apart from the *loadOrder* of the modules.
+If the load order is not provided, the modules might be loaded in a different order than these are supposed to, which might return an error due to missing objects.
 
 ##### **FIRE**
 
@@ -129,9 +140,12 @@ FIREinAction <- simInitAndSpades(times = times,
 dev.off() # This closes the device opened, as we open a new one when we run the next call
 ```
 
-Note that you can see all events happening, as well as any messages printed during the simulation. Really handy is also to see all plots while the simulation is running. This is really helpful to visually identify potential problems even before the simulation ends.
+Note that you can see all events happening, as well as any messages printed during the simulation.
+Really handy is also to see all plots while the simulation is running.
+This is really helpful to visually identify potential problems even before the simulation ends.
 
-Now we will check some of the results from this simulation. First, lets check the age map, flammable map (where fire can burn), the last years' fires and the cummulative fire map:
+Now we will check some of the results from this simulation.
+First, lets check the age map, flammable map (where fire can burn), the last years' fires and the cummulative fire map:
 
 ```{r fireResultsHid, include = FALSE}
 # Fire plots
@@ -182,7 +196,8 @@ HARVESTinAction <- simInitAndSpades(times = times,
 dev.off()
 ```
 
-Now we will check some of the results from this simulation. First, lets check the age map, disturbance map (where all the harvest was made), and the strata for harvesting:
+Now we will check some of the results from this simulation.
+First, lets check the age map, disturbance map (where all the harvest was made), and the strata for harvesting:
 
 ```{r harvestResults, include = FALSE}
 # Harvest plots
@@ -231,7 +246,6 @@ Plot(SpaDESinAction$birdAbundance[[paste0("Year", times$start)]][["RBNU"]],
      title = paste0("RBNU presence probability year ", times$start))
 Plot(SpaDESinAction$birdAbundance[[paste0("Year", times$end)]][["RBNU"]], 
      title = paste0("RBNU presence probability year ", times$end))
-
 ```
 
 We can even make some cool analysis with these results, such as answering how many birds were lost in the 10 years of the simulation:
@@ -275,18 +289,14 @@ Plot(SpaDESinAction$plotCaribou, title = "Caribou lambda through time")
 knitr::kable(SpaDESinAction$SorensenStats)
 ```
 
-
-
 ### Hands-on
 
-Are you ready to start on SpaDES? You can either play around with these modules (change parameters or change the study the area) or you can start you very own module. For that, you can simply type:
+Are you ready to start using `SpaDES`?
+You can either play around with these modules (change parameters or change the study the area) or you can start you very own module.
+For that, you can simply type:
 
 ```{r newMod, eval = FALSE, echo = TRUE}
 newModule("ModuleName", path = getPaths()$modulePath)
 ```
 
-
-## Happy SpaDESing!!!
-
-
-
+**Happy `SpaDES`-ing!!!**
